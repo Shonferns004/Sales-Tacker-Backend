@@ -1,0 +1,27 @@
+# dependencies
+node_modules/
+
+# build / runtime output
+dist/
+coverage/
+data/
+*.log
+
+# debug
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+pnpm-debug.*
+.codex-*.log
+.codex-*.err
+
+# local env files
+.env
+.env.local
+.env*.local
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+*.tmp
