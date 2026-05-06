@@ -3,7 +3,7 @@ create extension if not exists pgcrypto;
 create table if not exists public.leads (
   id uuid primary key default gen_random_uuid(),
   name text not null check (char_length(trim(name)) > 0),
-  phone text not null check (char_length(trim(phone)) > 0),
+  phone text check (phone is null or char_length(trim(phone)) > 0),
   stage text not null default 'Not contacted' check (
     stage in (
       'Not contacted',
@@ -17,6 +17,8 @@ create table if not exists public.leads (
     )
   ),
   priority text not null default 'mid' check (priority in ('high', 'mid', 'low')),
+  note text,
+  is_done boolean not null default false,
   follow_up_date date,
   created_date date not null default current_date,
   inserted_at timestamptz not null default now(),
